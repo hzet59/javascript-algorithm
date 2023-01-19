@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>다음에 올 숫자</title>
+  </head>
+  <body>
+    <script>
+      function solution(numer1, denom1, numer2, denom2) {
+        let answer = 0;
+        if (common[1] - common[0] == common[2] - common[1]) {
+          answer = common[common.length - 1] + common[1] - common[0];
+        } else {
+          const division = common[1] / common[0];
+          answer = common[common.length - 1] * division;
+        }
+        return answer;
+      }
+      // 방법 2
+      // pop() 메서드는 배열에서 마지막 요소를 제거하고 그 요소를 반환합니다.
+      function solution2(common) {
+        if (common[1] - common[0] == common[2] - common[1]) {
+          return common.pop() + common[1] - common[0];
+        } else {
+          return (common.pop() * common[1]) / common[0];
+        }
+      }
+
+      console.log(solution([5, 10, 15]));
+      console.log(solution([2, 4, 8]));
+    </script>
+  </body>
+</html>
