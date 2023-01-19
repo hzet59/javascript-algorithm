@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>다음에 올 숫자</title>
+  </head>
+  <body>
+    <script>
+      function solution(num, total) {
+        const division = total / num;
+        const rest = Math.floor(num / 2);
+        let answer = [];
+        if (Number.isInteger(division)) {
+          for (let i = division - rest; i <= division + rest; i++) {
+            answer.push(i);
+          }
+        } else {
+          const divisionFloor = Math.floor(total / num);
+          for (
+            let i = divisionFloor - rest + 1;
+            i <= divisionFloor + rest;
+            i++
+          ) {
+            answer.push(i);
+          }
+        }
+        return answer;
+      }
+      // 방법 2
+      function solution2(num, total) {
+        var min = Math.ceil(total / num - Math.floor(num / 2));
+        var max = Math.floor(total / num + Math.floor(num / 2));
+
+        return new Array(max - min + 1).fill(0).map((el, i) => {
+          return i + min;
+        });
+      }
+      console.log(solution(3, 12));
+      console.log(solution(4, 14));
+    </script>
+  </body>
+</html>
