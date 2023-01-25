@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>다항식 더하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(polynomial) {
+        const prices = polynomial.split("+");
+        let number = 0;
+        let count = 0;
+        let answer = "";
+        for (let i = 0; i < prices.length; i++) {
+          if (prices[i].includes("x")) {
+            count += Number(prices[i].split("x")[0]) || 1;
+          } else {
+            number += Number(prices[i]);
+          }
+        }
+        if (count >= 1) {
+          answer += `${count > 1 ? count : ""}x`;
+          answer += number ? " + " : "";
+        }
+        answer += number || "";
+        return answer;
+      }
+
+      // 방법 2
+      function solution2(polynomial) {
+        const arr = polynomial.split(" + ");
+        const xNum = arr
+          .filter((n) => n.includes("x"))
+          .map((n) => n.replace("x", "") || "1")
+          .reduce((acc, cur) => acc + parseInt(cur, 10), 0);
+        const num = arr
+          .filter((n) => !isNaN(n))
+          .reduce((acc, cur) => acc + parseInt(cur, 10), 0);
+
+        let answer = [];
+        if (xNum) answer.push(`${xNum === 1 ? "" : xNum}x`);
+        if (num) answer.push(num);
+
+        return answer.join(" + ");
+      }
+
+      console.log(solution("7"));
+      console.log(solution("3x + 7 + x"));
+      console.log(solution("2x + x + x"));
+    </script>
+  </body>
+</html>
