@@ -12,21 +12,21 @@
       let result = 0;
       function solution(n) {
         for (let i = 1; i <= n; i++) {
-          const x3 = i + result;
-          add(x3);
+          const value = i + result;
+          add(value);
         }
         return n + result;
       }
       function add(value) {
-        if (!(Number.isInteger(value / 3) || value.toString().includes("3"))) {
+        if (!(value % 3 === 0 || value.toString().includes("3"))) {
           return;
         } else {
           result += 1;
           return add(value + 1);
         }
       }
-      // 방법 2
 
+      // 방법 2
       function solution2(n) {
         let arr = [];
         let num = 0;
