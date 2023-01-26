@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>저주의 숫자 3</title>
+  </head>
+  <body>
+    <script>
+      let answer = 0;
+      let result = 0;
+      function solution(n) {
+        for (let i = 1; i <= n; i++) {
+          const x3 = i + result;
+          add(x3);
+        }
+        return n + result;
+      }
+      function add(value) {
+        if (!(Number.isInteger(value / 3) || value.toString().includes("3"))) {
+          return;
+        } else {
+          result += 1;
+          return add(value + 1);
+        }
+      }
+      // 방법 2
+
+      function solution2(n) {
+        let arr = [];
+        let num = 0;
+        while (arr.length !== n && ++num)
+          if (num % 3 !== 0 && !("" + num).includes("3")) arr.push(num);
+        return arr.pop();
+      }
+      console.log(solution(15));
+      console.log(solution(40));
+    </script>
+  </body>
+</html>
