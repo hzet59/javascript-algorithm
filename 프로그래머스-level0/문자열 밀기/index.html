@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문자열 밀기</title>
+  </head>
+  <body>
+    <script>
+      function solution(A, B) {
+        let answer = 0;
+        let array = [...A];
+        if (A === B) return 0;
+        while (answer < B.length) {
+          answer++;
+          array = [array.pop(), ...array];
+          if (array.join("") === B) {
+            break;
+          }
+        }
+        if (array.join("") !== B) {
+          answer = -1;
+        }
+        return answer;
+      }
+      // 방법 2
+      function solution2(A, B) {
+        if (A === B) return 0;
+
+        let arr = Array.from(A);
+        let count = 0;
+
+        while (count < B.length) {
+          count++;
+          arr.unshift(arr.pop());
+          if (arr.join("") === B) {
+            return count;
+          }
+        }
+
+        return -1;
+      }
+
+      console.log(solution("hello", "ohell"));
+      console.log(solution("aaca", "aaca"));
+      console.log(solution("apple", "elppa"));
+    </script>
+  </body>
+</html>
