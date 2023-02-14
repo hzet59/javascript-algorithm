@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자연수 뒤집어 배열로 만들기</title>
+  </head>
+  <body>
+    <script>
+      // .map(Number, String, Boolean) 등 리턴 타입을 지정할 수 있다.
+      function solution(n) {
+        const arr = n.toString().split("").map(Number);
+        const answer = arr.reverse();
+        return answer;
+      }
+
+      // 방법2 (n + "")로 String 타입으로 변환, 더 줄인 코드
+      function solution2(n) {
+        return (n + "").split("").reverse().map(Number);
+      }
+
+      console.log(solution(12345));
+    </script>
+  </body>
+</html>

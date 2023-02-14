@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>평균 구하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        const total = arr.reduce((pre, cur) => {
+          pre += cur;
+          return pre;
+        }, 0);
+        const answer = total / arr.length;
+        return answer;
+      }
+
+      // 방법 2
+      function solution2(arr) {
+        return arr.reduce((pre, cur) => pre + cur) / arr.length;
+      }
+
+      console.log(solution([1, 2, 3, 4]));
+    </script>
+  </body>
+</html>

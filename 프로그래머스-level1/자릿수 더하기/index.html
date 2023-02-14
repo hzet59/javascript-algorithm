@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자릿수 더하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        const arr = n.toString().split("");
+        const answer = arr.reduce((pre, cur) => Number(pre) + Number(cur), 0);
+        return answer;
+      }
+      // 방법2 초기값을 0으로 지정하기 때문에 pre에 Number을 안해도 됨
+      function solution2(n) {
+        const arr = n.toString().split("");
+        const answer = arr.reduce((pre, cur) => pre + Number(cur), 0);
+        return answer;
+      }
+      console.log(solution(103));
+    </script>
+  </body>
+</html>
