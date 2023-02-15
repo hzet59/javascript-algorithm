@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>정수 제곱근 판별</title>
+  </head>
+  <body>
+    <script>
+      // Math.sqrt = 제곱근 구하기
+      function solution(n) {
+        const sqrt = Math.sqrt(n);
+        const answer = Number.isInteger(sqrt) ? (sqrt + 1) * (sqrt + 1) : -1;
+        return answer;
+      }
+      // 방법 2 Math.pow = 제곱근 하기 n^2
+      function solution2(n) {
+        const sqrt = Math.sqrt(n);
+        const answer = Number.isInteger(sqrt) ? Math.pow(sqrt + 1, 2) : -1;
+        return answer;
+      }
+      console.log(solution("121"));
+      console.log(solution("3"));
+    </script>
+  </body>
+</html>
