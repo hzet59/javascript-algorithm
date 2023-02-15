@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>직사각형 넓이 구하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(dots) {
+        const xArr = dots.map((arr) => arr[0]);
+        const yArr = dots.map((arr) => arr[1]);
+        const x = Math.max(...xArr) - Math.min(...xArr);
+        const y = Math.max(...yArr) - Math.min(...yArr);
+        const answer = x * y;
+        return answer;
+      }
+
+      // 방법2 for-of 이용 .entries() key-index value-값인 object로 return
+      function solution2(dots) {
+        let arr = { x: [], y: [] };
+        for (const dot of dots) {
+          arr.x.push(dot[0]);
+          arr.y.push(dot[1]);
+        }
+        const x = Math.max(...arr.x) - Math.min(...arr.x);
+        const y = Math.max(...arr.y) - Math.min(...arr.y);
+        const answer = x * y;
+        return answer;
+      }
+      console.log(
+        solution2([
+          [-1, -1],
+          [1, 1],
+          [1, -1],
+          [-1, 1],
+        ])
+      );
+    </script>
+  </body>
+</html>
