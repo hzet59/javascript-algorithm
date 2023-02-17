@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문자열 내 p와 y의 개수</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const str = s.toLowerCase().split("");
+        const pLength = str.filter((value) => value === "p").length;
+        const yLength = str.filter((value) => value === "y").length;
+        let answer = true;
+        if (pLength !== yLength) {
+          answer = false;
+        }
+        return answer;
+      }
+      console.log(solution("pPoooyY"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>캐릭터의 좌표</title>
+  </head>
+  <body>
+    <script>
+      function solution(keyinput, board) {
+        const x = Math.floor(board[0] / 2);
+        const y = Math.floor(board[1] / 2);
+        const answer = keyinput.reduce(
+          (pre, cur) => {
+            if (cur === "up") {
+              pre[1] += pre[1] + 1 <= y ? 1 : 0;
+            } else if (cur === "down") {
+              pre[1] += Math.abs(pre[1] - 1) <= Math.abs(y) ? -1 : 0;
+            } else if (cur === "right") {
+              pre[0] += pre[0] + 1 <= x ? 1 : 0;
+            } else if (cur === "left") {
+              pre[0] += Math.abs(pre[0] - 1) <= Math.abs(x) ? -1 : 0;
+            }
+            return pre;
+          },
+          [0, 0]
+        );
+        return answer;
+      }
+      console.log(solution(["down", "down", "down", "down", "down"], [7, 9]));
+      console.log(solution(["left", "left", "left", "right", "left"], [3, 3]));
+      console.log(
+        solution(
+          [
+            "right",
+            "right",
+            "right",
+            "right",
+            "up",
+            "up",
+            "up",
+            "up",
+            "down",
+            "left",
+          ],
+          [9, 9]
+        )
+      );
+    </script>
+  </body>
+</html>

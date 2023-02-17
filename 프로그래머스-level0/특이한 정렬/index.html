@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>특이한 정렬</title>
+  </head>
+  <body>
+    <script>
+      function solution(numlist, n) {
+        const sortObject = numlist.reduce((pre, cur, idx) => {
+          pre.add({ value: cur, compare: Math.abs(n - cur) });
+          return pre;
+        }, new Set());
+        const sortArr = Array.from(sortObject);
+        const answer = sortArr
+          .sort((a, b) => a.compare - b.compare || b.value - a.value)
+          .map((obj) => obj.value);
+        return answer;
+      }
+
+      // 방법2
+      function solution2(numlist, n) {
+        return numlist.sort(
+          (a, b) => Math.abs(a - n) - Math.abs(b - n) || b - a
+        );
+      }
+      console.log(solution([10000, 20, 36, 47, 40, 6, 10, 7000], 30));
+    </script>
+  </body>
+</html>
