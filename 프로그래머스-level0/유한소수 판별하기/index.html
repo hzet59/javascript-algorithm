@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>유한소수 판별하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b) {
+        const gcd = getGCD(a, b);
+        a /= gcd;
+        b /= gcd;
+        while (b % 2 === 0) {
+          b /= 2;
+        }
+        while (b % 5 === 0) {
+          b /= 5;
+        }
+        return b === 1 ? 1 : 2;
+      }
+
+      // 최대공약수 구하기
+      function getGCD(a, b) {
+        if (b === 0) {
+          return a;
+        } else {
+          return getGCD(b, a % b);
+        }
+      }
+
+      // 방법 2
+      function solution2(a, b) {
+        let n = 1;
+        for (let i = 1; i <= Math.min(a, b); i++) {
+          if (a % i === 0 && b % i === 0) n = i;
+        }
+
+        b /= n;
+        while (b % 2 === 0) b /= 2;
+        while (b % 5 === 0) b /= 5;
+
+        return b === 1 ? 1 : 2;
+      }
+
+      console.log(solution(12, 30));
+      //   console.log(solution(12, 21));
+    </script>
+  </body>
+</html>
